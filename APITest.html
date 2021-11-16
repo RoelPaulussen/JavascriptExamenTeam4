@@ -11,7 +11,7 @@
 
 </head>
 <body>
-    
+    <!--This is the initial search script where everything gets set intially-->
     <script>
         //api url
         const api_url = "https://randomuser.me/api/?results=10";
@@ -32,7 +32,7 @@
 
         //show data within cards
         function show(data){
-            console.log(data);
+            //console.log(data);
             let  placeholder = document.getElementById('placeholder');
             let a, b = 0, d=1000000000;
             
@@ -50,7 +50,8 @@
                     </div>
                 </div>
                 `
-                console.log(Math.max(result.location.postcode))
+                //future price check for slider
+                //console.log(Math.max(result.location.postcode))
                 a = result.location.postcode;
                 if(!isNaN(a)){
                     if(a>b){
@@ -69,15 +70,15 @@
         }
         //search function that looks for any letter/combination that has been inputted
         function searchfilter(){
-            let input,inputPrice, filter, a, b, i, txtvalue, cards, divcol, pricevalue;
+            let input,inputPrice, filter, a, b, i, txtvalue, cards, divcol, pricevalue, brand;
             inputPrice = document.getElementById("priceRange");
             input = document.getElementById("inputsearch");
             filter = input.value.toUpperCase(); 
             divcol = document.getElementById("placeholder");
             cards = divcol.getElementsByClassName("tagged")
-            //console.log(divcol)
-            //console.log(cards.length + cards);
 
+            //get the brand
+            brand = document.getElementById("brandselect").value;
 
             //this will update the price selected by the user
             document.getElementById("curPrice").value = inputPrice.value;
@@ -104,6 +105,28 @@
                 }
             }
         }
+
+
+        //api url
+        const api_urlsort = "https://randomuser.me/api/?results=10";
+        //async function in order to get the data
+        async function getapisort(url){
+            
+            try{
+                const response = await fetch(url);
+                const data = await response.json();
+                for(let i=0; i < data.results.length; i ++){
+
+                }
+                console.log();
+            }
+            catch (error){
+                console.log(error);
+            }
+        }
+
+
+
     </script>
 
     <!-- search field -->
@@ -116,6 +139,17 @@
         <output id="pricemax">0</output>
         <br>
         <output id="curPrice">0</output>
+        <br>
+        <select id="brandselect" onclick="searchfilter()">
+            <option value="All">All</option>
+            <option value="tesla">Tesla</option>
+            <option value="bmw">BMW</option>
+            <option value="audi">Audi</option>
+        </select>
+        
+        <br>
+        
+        <input type="checkbox" id="az" onclick="getapisort(api_urlsort)"> alphabetic order
     </div>
 
     <!-- This is where the data goes to and spawns into cards -->
