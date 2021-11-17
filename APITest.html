@@ -14,7 +14,7 @@
     <!--This is the initial search script where everything gets set intially-->
     <script>
         //api url
-        const api_url = "https://randomuser.me/api/?results=10";
+        const api_url = "http://localhost:3000/cars";
         //async function in order to get the data
         async function getapi(url){
             
@@ -34,26 +34,42 @@
         function show(data){
             //console.log(data);
             let  placeholder = document.getElementById('placeholder');
-            let a, b = 0, d=1000000000;
+            let a, b = 0, d=100000000000;
+            console.log(data);
             
             //this is to make a new card for each result within the api
             //needs to be changed once we have the new api//
-            for(let result of data.results){
+            for(let i=0; i < data.length; i++){
+                let car = data[i];
                 placeholder.innerHTML += 
                 `
                 <div class="col tagged" id="newCard">
                     <div class="card" style="width: 18rem;">
-                        <img src="${result.picture.medium}" class="card-img-top" alt="...">
+                        <img src="" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">${result.name.first}</h5>
-                            <p class="card-text"><b class="PC" id="PC">${result.location.postcode}</b> <b class="Brand"></b> </p>
+                            <h5 class="card-title">${car.brand} ${car.carname}</h5>
+                            <p class="card-text">
+                                <b class="Brand" id="Brand">${car.brand}</b>
+                                <br>
+                                <b>Type:</b>
+                                <b class="typecar" id="TC">${car.type}</b>
+                                <br>
+                                <b>Buildyear:</b>
+                                <b class="buildyear" id="BY">${car.buildyear}</b>
+                                <br>
+                                <b>HP:</b>
+                                <b class="hp" id="HP">${car.hp}</b>
+                                <br>
+                                <b>Price:</b>
+                                <b class="PC" id="PC">${car.price}</b>
+                            </p>
                         </div>
                     </div>
                 </div>
                 `
                 //future price check for slider
                 //console.log(Math.max(result.location.postcode))
-                a = result.location.postcode;
+                a = car.price;
                 if(!isNaN(a)){
                     if(a>b){
                         b=a;
@@ -69,18 +85,20 @@
             document.getElementById("priceRange").value = b;
             document.getElementById("pricemin").value = d;
             document.getElementById("pricemax").value = b;
+            
         }
         
         //search function that looks for any letter/combination that has been inputted
         //also for price
         //almost for brand
         function searchfilter(){
-            let input,inputPrice, filter, a, b, i, txtvalue, cards, divcol, pricevalue, brand, brandvalue;
+            let input,inputPrice, filter, a, b, d, i, txtvalue, cards, divcol, pricevalue, brand, brandvalue;
             inputPrice = document.getElementById("priceRange");
             input = document.getElementById("inputsearch");
             filter = input.value.toUpperCase(); 
             divcol = document.getElementById("placeholder");
             cards = divcol.getElementsByClassName("tagged")
+            
             
 
             //get the brand
@@ -104,13 +122,14 @@
 
                 //this is to get the pricevalue out and convert it to a number
                 b = cards[i].getElementsByClassName("PC")[0];
+                
 
                 //getting the brand //add brandvalue === brand to the filter when we got the api
                 brandvalue = cards[i].getElementsByClassName("Brand");
 
                 //b = cards[i].getElementsByTagName("b")[0];
                 pricevalue = parseInt(b.textContent) || parseInt(b.innerText);
-
+                
                 if(txtvalue.toUpperCase().indexOf(filter) > -1 && pricevalue <= inputPrice.value){
                     cards[i].style.display = "";
                     if(isNaN(pricevalue)){
@@ -121,8 +140,8 @@
                     
                     cards[i].style.display = "none";
                     
-                    
                 }
+                
             }
         }
 
@@ -162,15 +181,16 @@
         //this is to sort on carname
         //might need some tag changes
         function sortcardmake(data){
-                const sortedObj =  _.sortBy(data, 'carname');
-                let cardamount = document.getElementsByClassName("tagged");
-                //don't try to fix the typeerror within this, it only causes massive lag in the browser page
-                //how or why? i don't know
-                for(i=cardamount.length; i >= 1;){
-                document.getElementById("newCard").remove();      
+            const sortedObj =  _.sortBy(data, 'carname');
+            let cardamount = document.getElementsByClassName("tagged");
+            //for all the current cards there are of the cars DELETE THEM out of the html            
+            for(i=cardamount.length -1; i >= 0; i--){               
+                cardamount[i].remove();
             }
+            
             //after for call up show with the sortedObj as data for new cards
             //this way we don't need to make another creation
+            show(sortedObj);
         }
 
     </script>

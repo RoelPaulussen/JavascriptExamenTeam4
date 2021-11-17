@@ -1,16 +1,16 @@
 {
   "cars": [
-    { "brand": "Tesla", "price": 5, "carname": "Model S" },
-    { "brand": "Tesla", "price": 7, "carname": "Model E" },
-    { "brand": "Tesla", "price": 2.5, "carname": "Model X"},
-    { "brand": "Tesla", "price": 2, "carname": "Model Y" },
-    { "brand": "Volkswagen", "price": 1, "carname": "ID3" },
-    { "brand": "Volkswagen", "price": 10, "carname": "ID4" },
-    { "brand": "Volkswagen", "price": 4, "carname": "IDBuzz"},
-    { "brand": "BMW", "price": 3, "carname": "IX"},
-    { "brand": "BMW", "price": 10, "carname": "IX3"},
-    { "brand": "BMW", "price": 10, "carname": "I3"},
-    { "brand": "BMW", "price": 10, "carname": "I3s"},
-    { "brand": "BMW", "price": 10, "carname": "I4"}
+    { "brand": "Tesla", "price": 5, "carname": "Model S", "buildyear": "", "type": "", "hp": ""},
+    { "brand": "Tesla", "price": 7, "carname": "Model E", "buildyear": "", "type": "", "hp": "" },
+    { "brand": "Tesla", "price": 2.5, "carname": "Model X", "buildyear": "", "type": "", "hp": ""},
+    { "brand": "Tesla", "price": 2, "carname": "Model Y", "buildyear": "", "type": "", "hp": ""},
+    { "brand": "Volkswagen", "price": 1, "carname": "ID3", "buildyear": "", "type": "", "hp": ""},
+    { "brand": "Volkswagen", "price": 10, "carname": "ID4", "buildyear": "", "type": "", "hp": ""},
+    { "brand": "Volkswagen", "price": 4, "carname": "IDBuzz", "buildyear": "", "type": "", "hp": ""},
+    { "brand": "BMW", "price": 3, "carname": "IX", "buildyear": "", "type": "", "hp": ""},
+    { "brand": "BMW", "price": 10, "carname": "IX3", "buildyear": "", "type": "", "hp": ""},
+    { "brand": "BMW", "price": 10, "carname": "I3", "buildyear": "", "type": "", "hp": ""},
+    { "brand": "BMW", "price": 10, "carname": "I3s", "buildyear": "", "type": "", "hp": ""},
+    { "brand": "BMW", "price": 10, "carname": "I4", "buildyear": "", "type": "", "hp": ""}
   ]
 }
