@@ -32,10 +32,9 @@
 
         //show data within cards
         function show(data){
-            //console.log(data);
             let  placeholder = document.getElementById('placeholder');
             let a, b = 0, d=100000000000;
-            console.log(data);
+            //console.log(data);
             
             //this is to make a new card for each result within the api
             //needs to be changed once we have the new api//
@@ -49,10 +48,10 @@
                         <div class="card-body">
                             <h5 class="card-title">${car.brand} ${car.carname}</h5>
                             <p class="card-text">
-                                <b class="Brand" id="Brand">${car.brand}</b>
+                                <b class="${car.brand}" id="${car.brand}">${car.brand}</b>
                                 <br>
                                 <b>Type:</b>
-                                <b class="typecar" id="TC">${car.type}</b>
+                                <b class="typecar" id="${car.type}">${car.type}</b>
                                 <br>
                                 <b>Buildyear:</b>
                                 <b class="buildyear" id="BY">${car.buildyear}</b>
@@ -92,26 +91,22 @@
         //also for price
         //almost for brand
         function searchfilter(){
-            let input,inputPrice, filter, a, b, d, i, txtvalue, cards, divcol, pricevalue, brand, brandvalue;
+            let input,inputPrice, filter, a, b, d, i, txtvalue, cards, divcol, pricevalue, brand, brandvalue, cartype, typevalue;
             inputPrice = document.getElementById("priceRange");
             input = document.getElementById("inputsearch");
             filter = input.value.toUpperCase(); 
             divcol = document.getElementById("placeholder");
-            cards = divcol.getElementsByClassName("tagged")
-            
-            
+            cards = divcol.getElementsByClassName("tagged");
 
-            //get the brand
+            //get the brand for filter
             brand = document.getElementById("brandselect").value;
+
+            cartype = document.getElementById("typeselect").value;
 
             //this will update the price selected by the user
             document.getElementById("curPrice").value = inputPrice.value;
 
-            /* test to check bang
-            if(brand === "All"){
-                console.log("bang")
-            }
-            */
+            console.log(cartype)
 
             //turns on or off what needs to be visible/invisible
             for(i=0; i < cards.length; i++){
@@ -123,18 +118,20 @@
                 //this is to get the pricevalue out and convert it to a number
                 b = cards[i].getElementsByClassName("PC")[0];
                 
-
                 //getting the brand //add brandvalue === brand to the filter when we got the api
-                brandvalue = cards[i].getElementsByClassName("Brand");
-
+                brandvalue = cards[i].getElementsByClassName(brand);
+                
+                console.log(brand)
+                //console.log();
                 //b = cards[i].getElementsByTagName("b")[0];
                 pricevalue = parseInt(b.textContent) || parseInt(b.innerText);
                 
-                if(txtvalue.toUpperCase().indexOf(filter) > -1 && pricevalue <= inputPrice.value){
-                    cards[i].style.display = "";
+                if(txtvalue.toUpperCase().indexOf(filter) > -1 && pricevalue <= inputPrice.value && brandvalue.length != 0){
+                    
                     if(isNaN(pricevalue)){
                         cards[i].style.display = "";
                     }
+                    cards[i].style.display = "";
                 }
                 else{
                     
@@ -144,12 +141,6 @@
                 
             }
         }
-
-        
-        //api url
-        //test api not the definitive one
-        //this can be removed later
-        const api_urlsort = "http://localhost:3000/cars";
         
         //async function in order to get the data
         async function getapisort(url){
@@ -168,8 +159,9 @@
             else{
                 try{
                     //this needs it's api link changed out once we got/made one
-                    const response = await fetch("https://randomuser.me/api/?results=10");
+                    const response = await fetch(url);
                     const data = await response.json();
+                    del();
                     show(data);
                 }
                 catch (error){
@@ -182,15 +174,20 @@
         //might need some tag changes
         function sortcardmake(data){
             const sortedObj =  _.sortBy(data, 'carname');
+            
+            del();
+            //after for call up show with the sortedObj as data for new cards
+            //this way we don't need to make another creation
+            show(sortedObj);
+        }
+
+        //this is to delete the existing cards in order to get new sorting positions
+        function  del(){
             let cardamount = document.getElementsByClassName("tagged");
             //for all the current cards there are of the cars DELETE THEM out of the html            
             for(i=cardamount.length -1; i >= 0; i--){               
                 cardamount[i].remove();
             }
-            
-            //after for call up show with the sortedObj as data for new cards
-            //this way we don't need to make another creation
-            show(sortedObj);
         }
 
     </script>
@@ -206,16 +203,22 @@
         <br>
         <output id="curPrice">0</output>
         <br>
-        <select id="brandselect" onclick="searchfilter()">
+        <select id="brandselect" oninput="searchfilter()">
             <option value="All">All</option>
             <option value="Tesla">Tesla</option>
             <option value="BMW">BMW</option>
             <option value="Volkswagen">Volkswagen</option>
         </select>
+        <select id="typeselect" oninput="searchfilter()">
+            <option value="All">All</option>
+            <option value="Coupe">Coupe</option>
+            <option value="Jeep">Jeep</option>
+            <option value="Sport">Sport</option>
+        </select>
         
         <br>
         
-        <input type="checkbox" id="az" onclick="getapisort(api_urlsort)"> alphabetic order
+        <input type="checkbox" id="az" onclick="getapisort(api_url)"> alphabetic order
     </div>
 
     <!-- This is where the data goes to and spawns into cards -->
