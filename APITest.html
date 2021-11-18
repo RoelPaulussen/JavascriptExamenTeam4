@@ -48,10 +48,10 @@
                         <div class="card-body">
                             <h5 class="card-title">${car.brand} ${car.carname}</h5>
                             <p class="card-text">
-                                <b class="${car.brand}" id="${car.brand}">${car.brand}</b>
+                                <b class="brand" id="brand}">${car.brand}</b>
                                 <br>
                                 <b>Type:</b>
-                                <b class="typecar" id="${car.type}">${car.type}</b>
+                                <b class="typecar" id="type">${car.type}</b>
                                 <br>
                                 <b>Buildyear:</b>
                                 <b class="buildyear" id="BY">${car.buildyear}</b>
@@ -60,7 +60,7 @@
                                 <b class="hp" id="HP">${car.hp}</b>
                                 <br>
                                 <b>Price:</b>
-                                <b class="PC" id="PC">${car.price}</b>
+                                <b class="PC" id="PC">${car.price}€</b>
                             </p>
                         </div>
                     </div>
@@ -91,7 +91,7 @@
         //also for price
         //almost for brand
         function searchfilter(){
-            let input,inputPrice, filter, a, b, d, i, txtvalue, cards, divcol, pricevalue, brand, brandvalue, cartype, typevalue;
+            let input,inputPrice, filter, a, b, c, d, i, txtvalue, cards, divcol, pricevalue, brand, brandvalue, cartype, typevalue;
             inputPrice = document.getElementById("priceRange");
             input = document.getElementById("inputsearch");
             filter = input.value.toUpperCase(); 
@@ -101,12 +101,11 @@
             //get the brand for filter
             brand = document.getElementById("brandselect").value;
 
+            //get the type for filter
             cartype = document.getElementById("typeselect").value;
-
+            
             //this will update the price selected by the user
             document.getElementById("curPrice").value = inputPrice.value;
-
-            console.log(cartype)
 
             //turns on or off what needs to be visible/invisible
             for(i=0; i < cards.length; i++){
@@ -118,27 +117,44 @@
                 //this is to get the pricevalue out and convert it to a number
                 b = cards[i].getElementsByClassName("PC")[0];
                 
-                //getting the brand //add brandvalue === brand to the filter when we got the api
-                brandvalue = cards[i].getElementsByClassName(brand);
+                //getting the brand
+                c = cards[i].getElementsByClassName("brand")[0];
+                brandvalue = c.textContent || c.innerText;
                 
-                console.log(brand)
-                //console.log();
-                //b = cards[i].getElementsByTagName("b")[0];
+                //getting the type
+                d = cards[i].getElementsByClassName("typecar")[0];
+                typevalue = d.textContent || c.innerText;
+
                 pricevalue = parseInt(b.textContent) || parseInt(b.innerText);
                 
-                if(txtvalue.toUpperCase().indexOf(filter) > -1 && pricevalue <= inputPrice.value && brandvalue.length != 0){
-                    
+                if(txtvalue.toUpperCase().indexOf(filter) > -1 && pricevalue <= inputPrice.value){
                     if(isNaN(pricevalue)){
                         cards[i].style.display = "";
                     }
                     cards[i].style.display = "";
+
+                    if(brandvalue == brand || brand == "All" && typevalue == cartype){
+                        cards[i].style.display = "";
+                    }
+                    //if the filter brand and card brand aren't the same and the filter isn't all do this
+                    if(brandvalue != brand && brand != "All"){
+                        //checks if it is showing on screen
+                        if(window.getComputedStyle(cards[i]).display != "none"){
+                            cards[i].style.display = "none";
+                        }
+                    }
+                    //if the filter brand and card brand the same and the filter isn't all aren't do this
+                    if(typevalue != cartype && cartype != "All"){
+                        //checks if it is showing on screen
+                        if(window.getComputedStyle(cards[i]).display != "none"){
+                            cards[i].style.display = "none";
+                        }
+                    }
+                    
                 }
                 else{
-                    
                     cards[i].style.display = "none";
-                    
                 }
-                
             }
         }
         
@@ -211,9 +227,12 @@
         </select>
         <select id="typeselect" oninput="searchfilter()">
             <option value="All">All</option>
-            <option value="Coupe">Coupe</option>
-            <option value="Jeep">Jeep</option>
+            <option value="SUV">SUV</option>
             <option value="Sport">Sport</option>
+            <option value="Sedan">Sedan</option>
+            <option value="Compact">Compact</option>
+            <option value="Minivan">Minivan</option>
+            <option value="Hatchback">Hatchback</option>
         </select>
         
         <br>
