@@ -40,11 +40,12 @@
             //needs to be changed once we have the new api//
             for(let i=0; i < data.length; i++){
                 let car = data[i];
+                console.log(car.img)
                 placeholder.innerHTML += 
                 `
                 <div class="col tagged" id="newCard">
                     <div class="card" style="width: 18rem;">
-                        <img src="" class="card-img-top" alt="...">
+                        <img src="${car.img}" width="1200" height="200" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">${car.brand} ${car.carname}</h5>
                             <p class="card-text">
@@ -212,7 +213,7 @@
     <div>
         <input type="text" id="inputsearch" onkeyup="searchfilter()">
         Min
-        <output id="pricemin">Min0</output>
+        <output id="pricemin"></output>
         <input type="range" id="priceRange" min="0" max="0" oninput="searchfilter()">
         Max
         <output id="pricemax">0</output>
