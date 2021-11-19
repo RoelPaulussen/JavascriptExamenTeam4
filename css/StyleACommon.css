@@ -15,7 +15,7 @@ header {
                 /* background-color: a nice gradient background also fits */
 }
 header a {
-    color: #ffffff;  /* or change it to black on a pale background */
+    color: #ffffff;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 20px;
@@ -41,7 +41,7 @@ header .highlight, header .current a {
                 /* font-weight: bold; (disabled) */
 }
 header a:hover {
-    color: darkgreen;  /* darkgray is nice too. */
+    color: darkgreen;  /* or darkgray */
     font-weight: bold;
     text-shadow: black 2px 2px;
 }
