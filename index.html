@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>CircuitSearch | Home</title>
+    <link rel="stylesheet" href="./css/StyleACommon.css">
+
+    <style>
+        header {
+            border-bottom: 0px;
+        }
+        header a {
+            color: black;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 15px;
+            line-height: 1.5;
+            background: rgb(8,66,51);
+            background: linear-gradient(90deg, rgba(8,66,51,0.7917367630646008) 0%, rgba(46,66,52,1) 100%);
+            width: 100%;
+            background: url(Imgfolder/mainpage_background_tesla_01left.jpg);
+            background-position: center;
+            background-size: cover;
+        }
+        .indexWelcomeText {
+            color: black;
+            margin-top: 0px;
+            float: left;
+        }
+        /* Below: mostly content CSS replicated from Yakup's first iteration of this page */
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .content{
+            width: 80%;
+            min-height: 700px;
+            margin: auto;
+            color: black;
+            position: relative;
+        }
+        .content .par {
+            padding-left: 20px;
+            padding-bottom: 25px;
+            font-family: Arial, Helvetica, sans-serif;
+            letter-spacing: 1.2px;
+            line-height: 30px;
+            font-size: 25px;
+        }
+        .content h1 {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 50px;
+            padding-left: 20px;
+            margin-top: 50px;
+            letter-spacing: 2px;
+        }
+        .content .searchButton01 {
+            width: 160px;
+            height: 40px;
+            background: orange;
+            border: none;
+            margin-top: 50px;
+            font-size: 18px;
+            border-radius: pointer;
+            transition: .4s ease;
+        }
+        .content .searchButton01 a {
+            text-decoration: none;
+            color: black;
+            transition: .3s ease;
+        }
+        .searchButton01:hover {
+            background-color: yellow;
+            box-shadow: black 5px 5px;
+        }
+        .content span {
+            color: orange;
+            font-size: 60px;
+        }
+        /* End of replicated content css */   
+    </style>
+
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><span class="highlight"><img src="Imgfolder/circuitsearch_logo_goldgreen.png" width="300px" alt="CircuitSearch"></span></h1>
+                
+            </div>
+        <nav>
+            <ul>
+                <li class="current"><a href="index.html">Home</a></li>
+                <li><a href="ev_about.html">About</a></li>
+                <li><a href="ev_contact.html">Contact</a></li>
+                <li><a href="ev_newsletter.html">Newsletter</a></li>
+                <li><a href="ev_legal.html">Legal</a></li>
+            </ul>
+        </nav>
+        </div> 
+    </header>
+    <div class="content">
+        <div class="indexWelcomeText">
+            <aside>
+                <h1>Your guide to your perfect ride</h1>
+                <p class="par">Looking for an electric vehicle that suits you? <br> CircuitSearch can help you find the right car for your needs and budget. <br>Get started and find out how you can drive into a cleaner, greener future!</p>
+            </aside>
+        </div>
+        <div class="carSearchBox">
+            <aside>
+                <h2>What are your needs?</h2>
+                <p>Select your requirements for your perfect electric vehicle below.</p>
+                <p>The most suitable products will be selected for you according to your specifications.</p>
+                <br>
+                <div class="carSearchCriteria">
+                    <p>Brand / Manufacturer</p>    
+                    <select class="carSearchDropdowns" name="Pick an option">
+                        <option value="001">One</option>
+                        <option value="002">Two</option>
+                        <option value="003">Three</option>
+                    </select>
+                </div>
+                <div class="carSearchCriteria">
+                    <p>Model</p>    
+                    <select class="carSearchDropdowns" name="Pick an option">
+                        <option value="001">One</option>
+                        <option value="002">Two</option>
+                        <option value="003">Three</option>
+                    </select>
+                </div>
+                <br>
+                <div class="carSearchCriteria">
+                    <p>Build Year</p>    
+                    <select class="carSearchDropdowns" name="Pick an option">
+                        <option value="001">One</option>
+                        <option value="002">Two</option>
+                        <option value="003">Three</option>
+                    </select>
+                </div>
+                <div class="carSearchCriteria">
+                    <p>Price</p>    
+                    <select class="carSearchDropdowns" name="Pick an option">
+                        <option value="001">One</option>
+                        <option value="002">Two</option>
+                        <option value="003">Three</option>
+                    </select>
+                </div>
+                <br>
+                <div class="carSearchCriteria">
+                    <p>Type</p>    
+                    <select class="carSearchDropdowns" name="Pick an option">
+                        <option value="001">One</option>
+                        <option value="002">Two</option>
+                        <option value="003">Three</option>
+                    </select>
+                </div>
+                <div class="carSearchCriteria">
+                    <p>Horsepower</p>    
+                    <select class="carSearchDropdowns" name="Pick an option">
+                        <option value="001">One</option>
+                        <option value="002">Two</option>
+                        <option value="003">Three</option>
+                    </select>
+                </div>
+                <br>
+                <div>
+                    <button class="searchButton01"><a href="#"><b>Start Search</b></a></button>
+                </div>
+            </aside>
+        </div>
+        <!-- Stylesheet for the car search box can be found on the common CSS file. -->
+    </div>
+    <footer>
+        <p>Circuitsearch &copy; 2021</p>
+    </footer>
+</body>
+</html>
