@@ -15,7 +15,7 @@ header {
                 /* background-color: a nice gradient background also fits */
 }
 header a {
-    color: #ffffff;
+    color: #ffffff;  /* or change it to black on a pale background */
     text-decoration: none;
     text-transform: uppercase;
     font-size: 20px;
@@ -41,7 +41,7 @@ header .highlight, header .current a {
                 /* font-weight: bold; (disabled) */
 }
 header a:hover {
-    color: darkgreen;  /* or darkgray */
+    color: darkgreen;  /* darkgray is nice too. */
     font-weight: bold;
     text-shadow: black 2px 2px;
 }
@@ -80,18 +80,20 @@ footer {
     border-width: 5px;
     background-color: silver;
     color: black;
-    width: 530px;
-    height: 650px;
+    width: 300px;   /* was formerly 530 */
+    height: 750px;  /* was formerly 650 or 750*/
     float: right;
     text-align: center;
     padding-top: 20px;
     margin-top: 50px;
     margin-bottom: 50px;
     font-size: 18px;
+    /* right margin expansion may be temporary */
+    margin-right: 100px;
 }
 .carSearchCriteria {
     /* the combined element of the dropdown selection inputs + their labels above them */
-    width: 230px;  /* 250 lines them up on the left */
+    width: 250px;  /* 250 lines them up on the left, 230 lines them up neatly in lines of 2 */
     height: 50px;
     font-size: 20px;
     margin-top: 30px;
@@ -110,4 +112,29 @@ footer {
     margin-left: 0px;
     margin-right: 0px;
     margin-bottom: 0px;
+}
+.carTextSearch {
+    /* The text input search, seperate from the other search funtions */
+    width: 250px;
+    height: 50px;
+    font-size: 20px;
+    margin-top: 50px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 30px;
+    float: left;
+    color: midnightblue;
+}
+.priceRangeBox {
+    /* contains the price range slider & outputs */
+    line-height: 10px;
+    width: 250px;
+    height: 50px;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 30px;
+    float: left;
+    color: midnightblue;
 }
