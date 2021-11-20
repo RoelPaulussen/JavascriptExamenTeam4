@@ -57,7 +57,7 @@ body {
     background: linear-gradient(90deg, rgba(8,66,51,0.7917367630646008) 0%, rgba(46,66,52,1) 100%);
 }
 footer {
-    padding-bottom: 10px;
+    padding-bottom: 25px;
     padding-top: 10px;
     margin-top: 120px;
     color: #ffffff;
@@ -81,15 +81,15 @@ footer {
     background-color: silver;
     color: black;
     width: 300px;   /* was formerly 530 */
-    height: 750px;  /* was formerly 650 or 750*/
-    float: right;
+    height: 650px;  /* was formerly 650 or 750*/
+    float: left;
     text-align: center;
     padding-top: 20px;
     margin-top: 50px;
     margin-bottom: 50px;
     font-size: 18px;
     /* right margin expansion may be temporary */
-    margin-right: 100px;
+    margin-left: 8%;
 }
 .carSearchCriteria {
     /* the combined element of the dropdown selection inputs + their labels above them */
@@ -141,11 +141,12 @@ footer {
 
 /* positioning for the search result cards, just temporary for now */
 .resultCardBox {
-    float: right;
-    border-style: ridge;
+    float: left;
+    border-style: double;
     border-color: red;
     border-width: 5px;
-    margin-right: 100px;
+    margin-left: 8%;
+    margin-bottom: 50px;
 }
 .resultCards {
     margin: 0;
