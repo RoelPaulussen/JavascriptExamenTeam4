@@ -138,3 +138,10 @@ footer {
     float: left;
     color: midnightblue;
 }
+
+/* positioning for the search result cards, just temporary for now */
+.resultCardBox {
+    float: left;
+    margin-left: 600px;
+    margin-top: -400px;
+}
