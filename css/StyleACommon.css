@@ -93,21 +93,6 @@ footer {
     /* right margin expansion may be temporary */
     margin-left: 8%;
 }
-    /*snapping the search box in place on narrow resolutions, and adjustments for the nav elements. I want to expand and improve on this, but time's up. */
-@media screen and ( max-width: 600px ){
-    .carSearchBox {
-        margin: 50px 0 50px 65px;
-    }
-    header li {
-        padding: 0 60px 0 60px;
-    }
-    header a {
-        font-size: 30px;
-        text-align: center;
-        line-height: 1.5;
-        float: center;
-    }
-}
 .carSearchCriteria {
     /* the combined element of the dropdown selection inputs + their labels above them */
     width: 250px;  /* 250 lines them up on the left, 230 lines them up neatly in lines of 2 */
@@ -177,4 +162,19 @@ footer {
 }
 .placeHolder {
     position: absolute;
+}
+/*snapping the search box in place on narrow resolutions, and adjustments for the nav elements. I want to expand and improve on this, but time's up. */
+@media screen and ( max-width: 600px ){
+    .carSearchBox {
+        margin: 50px 0 50px 65px;
+    }
+    header li {
+        padding: 0 60px 0 60px;
+    }
+    header a {
+        font-size: 30px;
+        text-align: center;
+        line-height: 1.5;
+        float: center;
+    }
 }
